@@ -48,15 +48,15 @@
             <h1>7 days forecast</h1>
             <div class="weather_info">
                 <div style="display: inline-block; font-size: 2rem; width: 100%"><p id="city_par">Your city:</p></div>
-                <div id="daysWrapper">
-                    <div class="dayForecast">
-                        <span class="dayTitle">Wed</span>
-                        <div class="dayInfo">
-                            <span class="temp"><i class="fas fa-long-arrow-alt-up"></i>Max 20 °C</span>
-                            <span class="temp"><i class="fas fa-long-arrow-alt-down"></i>Min 20 °C</span>
-                        </div>
-                    </div>
-                </div>
+<!--                <div id="daysWrapper">-->
+<!--                    <div class="dayForecast">-->
+<!--                        <span class="dayTitle">Wed</span>-->
+<!--                        <div class="dayInfo">-->
+<!--                            <span class="temp"><i class="fas fa-long-arrow-alt-up"></i>Max 20 °C</span>-->
+<!--                            <span class="temp"><i class="fas fa-long-arrow-alt-down"></i>Min 20 °C</span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </div>
     </div>

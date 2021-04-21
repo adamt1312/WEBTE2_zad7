@@ -28,10 +28,6 @@ const dataIntoDivs = (days) => {
         dayForecast.classList.add("grow");
         document.getElementsByClassName("weather_info")[0].appendChild(dayForecast);
 
-        // let hr = document.createElement("hr");
-        // hr.classList.add("borderBottom");
-        // document.getElementsByClassName("weather_info")[0].appendChild(hr);
-
         // dayTitle span
         let dt = day.dt;
         dt = dt * 1000;
@@ -41,11 +37,51 @@ const dataIntoDivs = (days) => {
         dayTitle.classList.add("dayTitle");
         dayTitle.innerText = day_name;
 
+        // day description div
+        let description = document.createElement("div");
+        description.classList.add("description");
+
+        let desc1 = document.createElement("div");
+        let desc2 = document.createElement("div");
+        desc1.classList.add("desc1");
+        desc2.classList.add("desc2");
+        let icon = document.createElement("i");
+        icon.classList.add("fas");
+        icon.classList.add("fa-2x");
+        if (day.weather[0].main.toLowerCase() == "rain") {
+            icon.classList.add("fa-cloud-rain");
+            desc1.appendChild(icon);
+        }
+        else if (day.weather[0].main.toLowerCase() == "clouds") {
+                icon.classList.add("fa-cloud-sun");
+                desc1.appendChild(icon);
+        }
+        else if (day.weather[0].main.toLowerCase() == "clear") {
+            icon.classList.add("fa-sun");
+            desc1.appendChild(icon);
+        }
+        else if (day.weather[0].main.toLowerCase() == "snow") {
+            icon.classList.add("fa-snowflake");
+            desc1.appendChild(icon);
+        }
+
+        description.appendChild(desc1);
+        description.appendChild(desc2);
+
+        let descriptionDetail1 = document.createElement("span");
+        descriptionDetail1.innerText = day.weather[0].main;
+        let descriptionDetail2 = document.createElement("span");
+        descriptionDetail2.innerText = day.weather[0].description;
+
+        desc2.appendChild(descriptionDetail1);
+        desc2.appendChild(descriptionDetail2);
+
         // dayInfo div
         let dayInfo = document.createElement("div");
         dayInfo.classList.add("dayInfo");
 
         dayForecast.appendChild(dayTitle);
+        dayForecast.appendChild(description);
         dayForecast.appendChild(dayInfo);
 
         // span temps
@@ -53,12 +89,19 @@ const dataIntoDivs = (days) => {
         let min_temp = document.createElement("span");
         max_temp.classList.add("temp");
         min_temp.classList.add("temp");
-        // max_temp.append()
-        // min_temp.append("<i class=\"fas fa-long-arrow-alt-down\"></i>");
         max_temp.innerText = "Max " + Math.round(parseFloat(day.temp.max)) + " °C";
         min_temp.innerText = "Min " + Math.round(parseFloat(day.temp.min)) + " °C";
         dayInfo.appendChild(max_temp);
         dayInfo.appendChild(min_temp);
+
+        let arrowUp = document.createElement("i");
+        arrowUp.classList.add("fas");
+        arrowUp.classList.add("fa-long-arrow-alt-up");
+        let arrowDown = document.createElement("i");
+        arrowDown.classList.add("fas");
+        arrowDown.classList.add("fa-long-arrow-alt-down");
+        max_temp.appendChild(arrowUp);
+        min_temp.appendChild(arrowDown);
         console.log(day);
     })
 }
