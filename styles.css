@@ -201,3 +201,21 @@ footer {
     height: 400px;
     margin-bottom: 30px;
 }
+
+.center {
+    text-align: center;
+}
+
+table {
+    margin: 0 !important;
+}
+
+#stats {
+    display: flex;
+    width: 100%;
+    color: black;
+    height: 15px;
+    margin-bottom: 10px;
+    justify-content: center;
+    align-items: center;
+}

@@ -4,15 +4,15 @@ require_once 'controllers/CountryController.php';
 require_once 'controllers/VisitController.php';
 require_once 'controllers/LocationController.php';
 
-//function console_log($output, $with_script_tags = true)
-//{
-//    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) .
-//        ');';
-//    if ($with_script_tags) {
-//        $js_code = '<script>' . $js_code . '</script>';
-//    }
-//    echo $js_code;
-//}
+function console_log($output, $with_script_tags = true)
+{
+    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) .
+        ');';
+    if ($with_script_tags) {
+        $js_code = '<script>' . $js_code . '</script>';
+    }
+    echo $js_code;
+}
 
 if (isset($_POST)) {
 
@@ -33,17 +33,17 @@ if (isset($_POST)) {
         }
 
         $location_id = $LC->isVisitedFrom($_POST["latitude"], $_POST["longitude"]);
-        if ($location_id == false) {
+
+        if ($location_id == null) {
             if (isset($_POST["city"])) {
                 $city = $_POST["city"];
             }
             else {
                 $city = "countryside";
             }
+
             $location_id = $LC->insertLocation($country_id, $city, $_POST["latitude"], $_POST["longitude"]);
         }
         $VC->insertVisit($_POST["ip"], $country_id, $location_id, $_POST["page"], $date, $time);
     }
 }
-
-

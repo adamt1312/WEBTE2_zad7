@@ -24,19 +24,19 @@ class CountryController
         return (int)$this->conn->lastInsertId();
     }
 
-    public function getCountry(int $id): ?Country {
-        $stmt = $this->conn->prepare("SELECT name, country_code, city
+    public function getCountry(int $id): mixed {
+        $stmt = $this->conn->prepare("SELECT name, country_code, capital_city
                                            FROM countries
                                            WHERE id=:id");
 
         $stmt->bindParam(":id", $id, PDO::PARAM_STR);
 
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, Country::class);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetch();
     }
 
-    public function isVisitedFrom(string $country_code): bool {
+    public function isVisitedFrom(string $country_code): ?int {
         $stmt = $this->conn->prepare("SELECT id
                                            FROM countries
                                            WHERE country_code=:country_code");
@@ -48,8 +48,8 @@ class CountryController
         $country_id = $stmt->fetch();
 
         if ($country_id != "") {
-            return true;
+            return $country_id["id"];
         }
-        return false;
+        return null;
     }
 }

@@ -15,8 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/e73d803768.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-</head>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script></head>
 <body>
     <div class="container">
         <?php include_once "menu.html"; ?>

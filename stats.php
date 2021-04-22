@@ -17,9 +17,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/e73d803768.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="scripts/script3.js"></script>
+
 </head>
 <body>
 <div style="display: flex;
@@ -30,46 +30,36 @@
     <?php include_once "menu.html"; ?>
 
     <div class="contentWrapper">
-        <table class="table">
+        <table class="table" id="tb1">
             <thead class="thead-dark">
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Country Name</th>
+                <th scope="col" class="center">Country Flag</th>
+                <th scope="col" class="center">Number of visitors</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="tbody"></tbody>
+        </table>
+
+        <table class="table" id="tb2">
+            <thead class="thead-dark">
+            <th colspan="3" class="center">Country Name </th>
             <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <th scope="col" class="center">City Name</th>
+                <th scope="col" class="center">Number of visitors</th>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            </tbody>
+            </thead>
+            <tbody id="tbody"></tbody>
         </table>
 
         <div id="map"></div>
+        <div ></div>
     </div>
 </div>
 
-<footer>Adam Trebichalský, 98014</footer>
-<script>
+<footer id="stats">Adam Trebichalský, 98014</footer>
 
-
-</script>
+<script src="scripts/script3.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu8jrYiRQKTnmtQjU3WcvQdN2F1jksPtc&callback=initMap"
         type="text/javascript"></script>
 </body>
