@@ -1,11 +1,5 @@
 <?php
 
-// Na druhej stránke budú zobrazené tieto údaje:
-//· IP adresa návštevníka danej stránky,
-//· GPS súradnice zodpovedajúceho miesta,
-//· mesto, v rámci ktorého sa dané súradnice nachádzajú (ak sa toto mesto nedá lokalizovať, tak sa vypíše reťazec typu „mesto sa nedá lokalizovať alebo sa nachádzate na vidieku“),
-//· štát, ktorému daná IP adresa prislúcha,
-//· hlavné mesto tohoto štátu.
 ?>
 
 <!doctype html>
@@ -20,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/e73d803768.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
@@ -43,7 +38,7 @@ background: linear-gradient(to left, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/
     </div>
 
     <footer>Adam Trebichalský, 98014</footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="script2.js"></script>
+
+    <script src="scripts/script2.js"></script>
 </body>
 </html>

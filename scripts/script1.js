@@ -4,11 +4,10 @@ $( document ).ready(function() {
     let latitude;
     let longitude;
     getWeather(latitude,longitude);
-
-
+    sentDataFromIpToDB();
 });
 
-const getWeather = async (latitude,longitude) => {
+const getWeather = (latitude,longitude) => {
     navigator.geolocation.getCurrentPosition((msg) => {
         latitude = msg.coords.latitude;
         longitude = msg.coords.longitude;
@@ -104,6 +103,26 @@ const dataIntoDivs = (days) => {
         arrowDown.classList.add("fa-long-arrow-alt-down");
         max_temp.appendChild(arrowUp);
         min_temp.appendChild(arrowDown);
-        console.log(day);
     })
+}
+
+const sentDataFromIpToDB = () => {
+    try {
+        axios.get("https://ipapi.co/json").then((response) => {
+            response.data["page"] = "home";
+            $.ajax({
+                type: "POST",
+                url: "https://wt156.fei.stuba.sk/mashup/visitHandler.php",
+                data: response.data,
+                success: function(msg)
+                {
+                    console.log(msg);
+                }
+            });
+        })
+    }
+    catch (e) {
+        console.log(e);
+    }
+
 }
