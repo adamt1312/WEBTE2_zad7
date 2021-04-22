@@ -37,29 +37,11 @@
 </head>
 <body>
 <div class="container">
-    <div id="titleWrapper">WEBTE2 - ZAD7</div>
-    <div id="menuWrapper">
-        <div class="linkWrapper">
-            <a href="index.php">
-                <i class="fas fa-home"></i>Home
-            </a>
-        </div>
-        <div class="linkWrapper">
-            <a href="infoaboutyou.php">
-                <i class="fas fa-info-circle"></i>Info
-            </a>
-        </div>
-        <div class="linkWrapper selected">
-            <a href="stats.php" class="selected_a">
-                <i class="fas fa-chart-bar"></i></i>Stats
-            </a>
-        </div>
-
-    </div>
+    <?php include_once "menu.html"; ?>
     <div id=""></div>
 </div>
 
 <footer>Adam Trebichalský, 98014</footer>
-<script src="script.js"></script>
+<script src="script1.js"></script>
 </body>
 </html>

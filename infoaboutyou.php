@@ -20,32 +20,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/e73d803768.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <div id="titleWrapper">WEBTE2 - ZAD7</div>
-        <div id="menuWrapper">
-            <div class="linkWrapper">
-                <a href="index.php">
-                    <i class="fas fa-home"></i>Home
-                </a>
+        <?php include_once "menu.html"; ?>
+        <div class="contentWrapper" style="background: #2980B9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+            <h1>Info about you</h1>
+            <div class="weather_info">
+                <ul id="infoList">
+                    <li id="ipaddr">Your IP address: </li>
+                    <li id="coords">GPS Coordinates: </li>
+                    <li id="city">Your city: </li>
+                    <li id="country">Your country: </li>
+                    <li id="capital">Capital city: </li>
+                </ul>
             </div>
-            <div class="linkWrapper selected">
-                <a href="infoaboutyou.php" class="selected_a">
-                    <i class="fas fa-info-circle"></i>Info
-                </a>
-            </div>
-            <div class="linkWrapper">
-                <a href="stats.php">
-                    <i class="fas fa-chart-bar"></i></i>Stats
-                </a>
-            </div>
-
         </div>
-        <div id=""></div>
     </div>
 
     <footer>Adam Trebichalský, 98014</footer>
-    <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="script2.js"></script>
 </body>
 </html>

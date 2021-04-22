@@ -1,3 +1,5 @@
+document.getElementsByClassName("linkWrapper")[0].classList.add("selected");
+document.getElementById("menu1").classList.add("selected_a");
 $( document ).ready(function() {
     let latitude;
     let longitude;

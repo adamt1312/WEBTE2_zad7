@@ -89,6 +89,8 @@ a:hover:after {
     height: auto;
     border-radius: 30px;
     background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(209,209,209,1) 60%, rgba(255,255,255,1) 100%);
+    /*box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;*/
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     margin-top: 50px;
     margin-bottom: 50px;
     z-index: 300;
@@ -183,4 +185,13 @@ footer {
     margin: 0;
     height: 3px;
     background-color: black;
+}
+
+#infoList {
+    margin: 25px;
+
+}
+#infoList li{
+    font-size: 20px;
+
 }

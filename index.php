@@ -23,45 +23,17 @@
 </head>
 <body>
     <div class="container">
-        <div id="titleWrapper">WEBTE2 - ZAD7</div>
-        <div id="menuWrapper">
-            <div class="linkWrapper selected">
-                <a href="index.php" class="selected_a">
-                    <i class="fas fa-home"></i>Home
-                </a>
-            </div>
-            <div class="linkWrapper">
-                <a href="infoaboutyou.php">
-                    <i class="fas fa-info-circle"></i>Info
-                </a>
-            </div>
-            <div class="linkWrapper">
-                <a href="stats.php">
-                    <i class="fas fa-chart-bar"></i></i>Stats
-                </a>
-            </div>
-
-        </div>
-
+        <?php include_once "menu.html"; ?>
 
         <div class="contentWrapper">
             <h1>7 days forecast</h1>
             <div class="weather_info">
                 <div style="display: inline-block; font-size: 2rem; width: 100%"><p id="city_par">Your city:</p></div>
-<!--                <div id="daysWrapper">-->
-<!--                    <div class="dayForecast">-->
-<!--                        <span class="dayTitle">Wed</span>-->
-<!--                        <div class="dayInfo">-->
-<!--                            <span class="temp"><i class="fas fa-long-arrow-alt-up"></i>Max 20 °C</span>-->
-<!--                            <span class="temp"><i class="fas fa-long-arrow-alt-down"></i>Min 20 °C</span>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
             </div>
         </div>
     </div>
 
     <footer>Adam Trebichalský, 98014</footer>
-    <script src="script.js"></script>
+    <script src="script1.js"></script>
 </body>
 </html>
