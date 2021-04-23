@@ -98,6 +98,7 @@ a:hover:after {
 .weather_info {
     width: 100%;
     height: 90%;
+    margin-bottom: 40px;
 }
 
 #city_par {
@@ -218,4 +219,26 @@ table {
     margin-bottom: 10px;
     justify-content: center;
     align-items: center;
+}
+
+#tb1 {
+    margin-bottom: 15px;
+}
+
+#tb2 {
+    display: none;
+    margin-bottom: 15px;
+}
+
+#tb3 {
+    margin-top: 10px !important;
+
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+
+
+}
+
+.returnIcon {
+    cursor: pointer;
 }

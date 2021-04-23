@@ -5,6 +5,7 @@ document.getElementById("menu3").classList.add("selected_a");
 axios.get("https://ipapi.co/json").then(response => {
     response.data["page"] = "stats";
     try {
+        // handling visit
         $.ajax({
             type: "POST",
             url: "https://wt156.fei.stuba.sk/mashup/visitHandler.php",
@@ -18,7 +19,7 @@ axios.get("https://ipapi.co/json").then(response => {
         console.log(e);
     }
 });
-// getting data from DB
+// getting stats data from DB
 try {
     $.ajax({
         type: "GET",
@@ -26,10 +27,10 @@ try {
         success: function(msg)
         {
             let data = JSON.parse(msg);
-            fillTable1 (data.tableData);
+            fillTable1(data.tableData);
+            fillTable3(data.intervalsOfVisits);
             initMap(data.markers);
             document.getElementById("stats").innerText = "Our most visited page: " + data.mostVisited;
-
         }
     });
 } catch (e) {
@@ -53,9 +54,8 @@ const initMap = (markersCoords) => {
 }
 
 const fillTable1 = (data) => {
+    let tbody = document.getElementById("tbody1");
     data.forEach((visit) => {
-        let tbody = document.getElementById("tbody");
-
         let tr = document.createElement("tr");
         let th = document.createElement("th");
         let td1 = document.createElement("td");
@@ -70,7 +70,7 @@ const fillTable1 = (data) => {
         th.appendChild(a);
         // th.scope = "row";
         a.classList.add("countryTitle");
-        a.innerText += visit[0];
+        a.innerText = visit[0];
         a.id = visit[3];
         // tr.appendChild(th);
         td1.classList.add("center");
@@ -78,14 +78,71 @@ const fillTable1 = (data) => {
         flag.src = "http://purecatamphetamine.github.io/country-flag-icons/3x2/" +  visit[1] + ".svg";
         flag.style = "width: 40px";
         td1.appendChild(flag);
-        td2.innerText += visit[2];
+        td2.innerText = visit[2];
         tr.appendChild(td1);
         tr.appendChild(td2);
     });
-    document.getElementsByClassName('countryTitle').addEventListener('click',ev => {
-        console.log('clicked');
-    });
+
+    const divs = document.querySelectorAll('.countryTitle');
+
+    divs.forEach(el => el.addEventListener('click', event => {
+        try {
+            $.ajax({
+                type: "GET",
+                url: "https://wt156.fei.stuba.sk/mashup/statsHandler.php",
+                data: {
+                    "country_id": el.id,
+                },
+                success: function(msg)
+                {
+                    fillTable2(JSON.parse(msg),el.innerHTML);
+                    document.getElementById("tb1").style.display = "none";
+                    document.getElementById("tb2").style.display = "table";
+                }
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    }));
 }
 
+const fillTable2 = (cities,country_name) => {
+    // sets new title and clear tbody
+    let title = document.getElementById("country_name_title")
+    title.innerHTML = country_name;
+    let icon = document.createElement("i");
+    icon.classList.add("fa-undo-alt","fas","returnIcon");
+    icon.style.color = "white";
+    title.appendChild(icon);
+    $("#tb2 tbody tr").remove();
 
+    // insert data into tbody
+    let tbody = document.getElementById("tbody2");
+    cities.forEach(city => {
+        let tr = document.createElement("tr");
+        let td1 = document.createElement("td");
+        let td2 = document.createElement("td");
+
+        tbody.appendChild(tr);
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+
+        td1.innerText = city.city_name;
+        td2.innerText = city.count;
+        td1.classList.add("center");
+        td2.classList.add("center");
+    })
+
+    icon.addEventListener('click',ev => {
+        document.getElementById("tb2").style.display = "none";
+        document.getElementById("tb1").style.display = "table";
+    })
+}
+
+const fillTable3 = (intervalsOfVisits) => {
+    let index = 0;
+    document.querySelectorAll(".interval").forEach(td => {
+        td.innerHTML = intervalsOfVisits[index++];
+    })
+}
 

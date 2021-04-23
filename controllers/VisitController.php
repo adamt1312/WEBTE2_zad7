@@ -20,27 +20,61 @@ class VisitController
         return (int)$this->conn->lastInsertId();
     }
 
-    public function getNumberOfVisitorsFromCountries(): mixed {
-        $stmt = $this->conn->prepare("SELECT country_id, COUNT(DISTINCT ip) AS visitors
-                                           FROM `visits`
-                                           GROUP BY country_id");
+    //dava malo prihlaseni z velkej krajiny
+    public function getNumberOfVisitorsFromCountries(): ?array {
+        $stmt = $this->conn->prepare("SELECT DISTINCT country_id
+                                           FROM `visits`");
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $all_countries_visitors = $stmt->fetchAll();
+        $all_countries = $stmt->fetchAll();
 
-        $CC = new CountryController();
+        $all_countries_ids = [];
+        foreach ($all_countries as $country) {
+            array_push($all_countries_ids, $country["country_id"]);
+        }
+
+
 
         $result = [];
-        foreach ($all_countries_visitors as $country_visitors) {
-
-            $country = $CC->getCountry((int)$country_visitors["country_id"]);
-
-            if ($country == null) {
-                return null;
-            }
-            array_push($result, [$country["name"], $country["country_code"], $country_visitors["visitors"], $country_visitors["country_id"]]);
-        }
+//        foreach () {
+//
+//        }
         return $result;
+    }
+
+    public function getNumberOfVisits(): array {
+        $stmt = $this->conn->prepare("SELECT time
+                                           FROM `visits`");
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $all_times = $stmt->fetchAll();
+
+        $times = [];
+        $one = 0;
+        $two = 0;
+        $three = 0;
+        $four = 0;
+
+        foreach ($all_times as $time) {
+
+
+            if (date("H:i:s", strtotime("06:00:00")) <= $time["time"] &&
+                $time["time"] <= date("H:i:s", strtotime("14:59:59"))) {
+                $one = $one + 1;
+            } else if (date("H:i:s", strtotime("15:00:00")) <= $time["time"] &&
+                $time["time"] <= date("H:i:s", strtotime("20:59:59"))) {
+                $two = $two + 1;
+            } else if (date("H:i:s", strtotime("21:00:00")) <= $time["time"] &&
+                $time["time"] <= date("H:i:s", strtotime("23:59:59"))) {
+                $three = $three + 1;
+            } else if (date("H:i:s", strtotime("00:00:00")) <= $time["time"] &&
+                $time["time"] <= date("H:i:s", strtotime("05:59:59"))) {
+                $four = $four + 1;
+            }
+        }
+
+        array_push($times, $one, $two, $three, $four);
+        return $times;
     }
 
     public function getPageWithMaxNumberOfVisitors(): string {
@@ -53,15 +87,6 @@ class VisitController
         $result = $stmt->fetch();
 
         return $result["page"];
-    }
-
-    public function getVisit(int $id): Visit {
-        $stmt = $this->conn->prepare("SELECT ip, country_id, location_id, page, date, time
-                                           FROM visits
-                                           WHERE id=?");
-        $stmt->execute([$id]);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, Visit::class);
-        return $stmt->fetch();
     }
 
     public function isTodayVisited(string $ip, string $page, string $date): bool {

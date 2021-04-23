@@ -25,18 +25,7 @@ class LocationController
         return (int)$this->conn->lastInsertId();
     }
 
-    public function getLocation(int $id): Location {
-        $stmt = $this->conn->prepare("SELECT country_id, city, latitude, longitude
-                                           FROM locations
-                                           WHERE id=:id");
-
-        $stmt->bindParam(":id", $id, PDO::PARAM_STR);
-
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, Location::class);
-        return $stmt->fetch();
-    }
-
+    //dava vela prihlaseni z jednej malej dediny
     public function getCountryLocations(int $country_id): mixed {
         $stmt = $this->conn->prepare("SELECT location_id, COUNT(location_id) AS `count`
                                            FROM `visits`
@@ -56,7 +45,7 @@ class LocationController
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $city = $stmt->fetch();
-            array_push($result, [$city["city"], $location["count"]]);
+            array_push($result, ["city_name" => $city["city"] ,"count"=> $location["count"]]);
         }
         return $result;
     }

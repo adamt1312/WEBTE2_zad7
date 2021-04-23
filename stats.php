@@ -32,28 +32,52 @@
     <div class="contentWrapper">
         <table class="table" id="tb1">
             <thead class="thead-dark">
+            <th colspan="3" class="center">Visits stats</th>
             <tr>
                 <th scope="col">Country Name</th>
                 <th scope="col" class="center">Country Flag</th>
                 <th scope="col" class="center">Number of visitors</th>
             </tr>
             </thead>
-            <tbody id="tbody"></tbody>
+            <tbody id="tbody1"></tbody>
         </table>
 
         <table class="table" id="tb2">
             <thead class="thead-dark">
-            <th colspan="3" class="center">Country Name </th>
+            <th colspan="3" class="center" id="country_name_title"></th>
             <tr>
                 <th scope="col" class="center">City Name</th>
                 <th scope="col" class="center">Number of visitors</th>
             </tr>
             </thead>
-            <tbody id="tbody"></tbody>
+            <tbody id="tbody2">
+
+            </tbody>
         </table>
 
+
+
         <div id="map"></div>
-        <div ></div>
+
+        <table class="table table-dark" id="tb3">
+            <thead class="thead-dark">
+            <th colspan="4" class="center">Time intervals of visits</th>
+            <tr>
+                <th scope="col" class="center">06:00 - 15:00</th>
+                <th scope="col" class="center">15:00 - 21:00</th>
+                <th scope="col" class="center">21:00 - 00:00</th>
+                <th scope="col" class="center">00:00 - 06:00</th>
+            </tr>
+            </thead>
+            <tbody id="tbody3">
+            <tr>
+                <td class="center interval"></td>
+                <td class="center interval"></td>
+                <td class="center interval"></td>
+                <td class="center interval"></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
