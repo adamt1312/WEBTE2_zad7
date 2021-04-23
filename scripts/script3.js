@@ -26,6 +26,7 @@ try {
         url: "https://wt156.fei.stuba.sk/mashup/statsHandler.php",
         success: function(msg)
         {
+
             let data = JSON.parse(msg);
             fillTable1(data.tableData);
             fillTable3(data.intervalsOfVisits);
@@ -70,15 +71,15 @@ const fillTable1 = (data) => {
         th.appendChild(a);
         // th.scope = "row";
         a.classList.add("countryTitle");
-        a.innerText = visit[0];
-        a.id = visit[3];
+        a.innerText = visit.country_name;
+        a.id = visit.country_id;
         // tr.appendChild(th);
         td1.classList.add("center");
         td2.classList.add("center");
-        flag.src = "http://purecatamphetamine.github.io/country-flag-icons/3x2/" +  visit[1] + ".svg";
+        flag.src = "https://purecatamphetamine.github.io/country-flag-icons/3x2/" +  visit.country_code + ".svg";
         flag.style = "width: 40px";
         td1.appendChild(flag);
-        td2.innerText = visit[2];
+        td2.innerText = visit.visits_count;
         tr.appendChild(td1);
         tr.appendChild(td2);
     });
@@ -145,4 +146,5 @@ const fillTable3 = (intervalsOfVisits) => {
         td.innerHTML = intervalsOfVisits[index++];
     })
 }
+
 

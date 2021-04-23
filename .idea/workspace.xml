@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="c08b09d5-7c42-4f96-9dbc-518aba91f332" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/LocationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/LocationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/VisitController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/VisitController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/script3.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/script3.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stats.php" beforeDir="false" afterPath="$PROJECT_DIR$/stats.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statsHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/statsHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visitHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/visitHandler.php" afterDir="false" />
     </list>
     <list id="5ca7e9e9-2585-4255-b1bd-f532012c2208" name="Changes by andre" comment="">
       <change beforePath="$PROJECT_DIR$/controllers/LocationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/LocationController.php" afterDir="false" />
@@ -42,10 +41,14 @@
     </file-type-list>
   </component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/controllers/LocationController.php">
+    <file path="$PROJECT_DIR$/controllers/VisitController.php">
       <ranges>
-        <range start1="27" end1="39" start2="27" end2="28" changelist="5ca7e9e9-2585-4255-b1bd-f532012c2208" />
-        <range start1="58" end1="59" start2="47" end2="48" changelist="c08b09d5-7c42-4f96-9dbc-518aba91f332" />
+        <range start1="24" end1="26" start2="24" end2="28" changelist="5ca7e9e9-2585-4255-b1bd-f532012c2208" />
+        <range start1="28" end1="29" start2="30" end2="31" changelist="5ca7e9e9-2585-4255-b1bd-f532012c2208" />
+        <range start1="30" end1="33" start2="32" end2="40" changelist="5ca7e9e9-2585-4255-b1bd-f532012c2208" />
+        <range start1="34" end1="41" start2="41" end2="41" changelist="5ca7e9e9-2585-4255-b1bd-f532012c2208" />
+        <range start1="45" end1="47" start2="45" end2="48" changelist="5ca7e9e9-2585-4255-b1bd-f532012c2208" />
+        <range start1="59" end1="60" start2="60" end2="60" changelist="c08b09d5-7c42-4f96-9dbc-518aba91f332" />
       </ranges>
     </file>
   </component>
@@ -101,6 +104,7 @@
       <updated>1619021038624</updated>
       <workItem from="1619021039977" duration="29397000" />
       <workItem from="1619083770527" duration="45803000" />
+      <workItem from="1619168258380" duration="6183000" />
     </task>
     <servers />
   </component>

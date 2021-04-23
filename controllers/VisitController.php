@@ -22,29 +22,30 @@ class VisitController
 
     //dava malo prihlaseni z velkej krajiny
     public function getNumberOfVisitorsFromCountries(): ?array {
-        $stmt = $this->conn->prepare("SELECT DISTINCT country_id
-                                           FROM `visits`");
+        $stmt = $this->conn->prepare("SELECT country_id, COUNT(DISTINCT ip, date) AS `count`
+                                            FROM visits
+                                            GROUP BY country_id 
+                                            ORDER BY `count` DESC");
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $all_countries = $stmt->fetchAll();
+        $all_countries_visits = $stmt->fetchAll();
 
-        $all_countries_ids = [];
-        foreach ($all_countries as $country) {
-            array_push($all_countries_ids, $country["country_id"]);
-        }
-
-
-
+        $CC = new CountryController();
         $result = [];
-//        foreach () {
-//
-//        }
+        foreach ($all_countries_visits as $country) {
+            $country_obj = $CC->getCountry($country["country_id"]);
+            array_push($result, ["country_id" => $country["country_id"],
+                                      "country_name" => $country_obj["name"],
+                                      "country_code" => $country_obj["country_code"],
+                                      "visits_count" => $country["count"]]);
+        }
         return $result;
     }
 
     public function getNumberOfVisits(): array {
-        $stmt = $this->conn->prepare("SELECT time
-                                           FROM `visits`");
+        $stmt = $this->conn->prepare("SELECT min(time) as time
+                                           FROM visits 
+                                           GROUP BY ip, date");
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $all_times = $stmt->fetchAll();
@@ -56,7 +57,6 @@ class VisitController
         $four = 0;
 
         foreach ($all_times as $time) {
-
 
             if (date("H:i:s", strtotime("06:00:00")) <= $time["time"] &&
                 $time["time"] <= date("H:i:s", strtotime("14:59:59"))) {

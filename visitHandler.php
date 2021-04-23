@@ -4,16 +4,6 @@ require_once 'controllers/CountryController.php';
 require_once 'controllers/VisitController.php';
 require_once 'controllers/LocationController.php';
 
-function console_log($output, $with_script_tags = true)
-{
-    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) .
-        ');';
-    if ($with_script_tags) {
-        $js_code = '<script>' . $js_code . '</script>';
-    }
-    echo $js_code;
-}
-
 if (isset($_POST)) {
 
     $VC = new VisitController();

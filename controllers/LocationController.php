@@ -27,7 +27,7 @@ class LocationController
 
     //dava vela prihlaseni z jednej malej dediny
     public function getCountryLocations(int $country_id): mixed {
-        $stmt = $this->conn->prepare("SELECT location_id, COUNT(location_id) AS `count`
+        $stmt = $this->conn->prepare("SELECT location_id, COUNT(DISTINCT ip, date) AS `count`
                                            FROM `visits`
                                            WHERE country_id=?
                                            GROUP BY location_id");
