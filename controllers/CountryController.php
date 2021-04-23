@@ -1,7 +1,6 @@
 <?php
 
 require_once ("database/Database.php");
-require_once ("classes/Country.php");
 
 class CountryController
 {

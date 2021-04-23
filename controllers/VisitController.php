@@ -1,7 +1,6 @@
 <?php
 
 require_once ("database/Database.php");
-require_once ("classes/Visit.php");
 require_once ("CountryController.php");
 
 class VisitController
@@ -20,7 +19,6 @@ class VisitController
         return (int)$this->conn->lastInsertId();
     }
 
-    //dava malo prihlaseni z velkej krajiny
     public function getNumberOfVisitorsFromCountries(): ?array {
         $stmt = $this->conn->prepare("SELECT country_id, COUNT(DISTINCT ip, date) AS `count`
                                             FROM visits
