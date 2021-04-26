@@ -24,7 +24,7 @@
         <div class="contentWrapper">
             <h1>7 days forecast</h1>
             <div class="weather_info">
-                <div style="display: inline-block; font-size: 2rem; width: 100%"><p id="city_par">Your city:</p></div>
+                <div class="wrp"><p id="city_par">Your city:</p></div>
             </div>
         </div>
     </div>

@@ -13,18 +13,12 @@ class LocationController
 
     public function insertLocation($country_id, $city, $latitude, $longitude): int {
         $stmt = $this->conn->prepare("INSERT INTO locations (country_id, city, latitude, longitude)
-                                            VALUES (:country_id, :city, :latitude, :longitude)");
+                                            VALUES (?, ?, ?, ?)");
+        $stmt->execute([$country_id,$city,$latitude,$longitude]);
 
-        $stmt->bindParam(":country_id", $country_id, PDO::PARAM_STR);
-        $stmt->bindParam(":city", $city, PDO::PARAM_STR);
-        $stmt->bindParam(":latitude", $latitude, PDO::PARAM_STR);
-        $stmt->bindParam(":longitude", $longitude, PDO::PARAM_STR);
-
-        $stmt->execute();
         return (int)$this->conn->lastInsertId();
     }
 
-    //dava vela prihlaseni z jednej malej dediny
     public function getCountryLocations(int $country_id): mixed {
         $stmt = $this->conn->prepare("SELECT location_id, COUNT(DISTINCT ip, date) AS `count`
                                            FROM `visits`

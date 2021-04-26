@@ -63,17 +63,14 @@ const fillTable1 = (data) => {
         let td2 = document.createElement("td");
         let flag = document.createElement("img");
         let a = document.createElement("a");
-        // a.href = "https://wt156.fei.stuba.sk/mashup/statsHandler.php/?country_id=" + visit[3];
         a.style = "cursor: pointer";
 
         tbody.appendChild(tr);
         tr.appendChild(th);
         th.appendChild(a);
-        // th.scope = "row";
         a.classList.add("countryTitle");
         a.innerText = visit.country_name;
         a.id = visit.country_id;
-        // tr.appendChild(th);
         td1.classList.add("center");
         td2.classList.add("center");
         flag.src = "https://purecatamphetamine.github.io/country-flag-icons/3x2/" +  visit.country_code + ".svg";

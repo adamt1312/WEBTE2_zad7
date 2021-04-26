@@ -6,7 +6,6 @@ require_once "controllers/LocationController.php";
 $LC = new LocationController();
 $VC = new VisitController();
 
-//$LC->getCountryLocations($_GET['country_id']);
 // detail table, country cities
 if (isset($_GET['country_id'])) {
     echo json_encode($LC->getCountryLocations($_GET['country_id']));

@@ -13,13 +13,9 @@ class CountryController
 
     public function insertCountry($name, $country_code, $capital_city): int {
         $stmt = $this->conn->prepare("INSERT INTO countries (name, country_code, capital_city)
-                                           VALUES (:name, :country_code, :capital_city)");
+                                           VALUES (?, ?, ?)");
+        $stmt->execute([$name,$country_code,$capital_city]);
 
-        $stmt->bindParam(":name", $name, PDO::PARAM_STR);
-        $stmt->bindParam(":country_code", $country_code, PDO::PARAM_STR);
-        $stmt->bindParam(":capital_city", $capital_city, PDO::PARAM_STR);
-
-        $stmt->execute();
         return (int)$this->conn->lastInsertId();
     }
 

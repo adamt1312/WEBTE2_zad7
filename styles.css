@@ -110,7 +110,6 @@ a:hover:after {
     flex-direction: column;
     height: auto;
     width: auto;
-
 }
 
 .dayForecast {
@@ -194,7 +193,6 @@ footer {
 }
 #infoList li{
     font-size: 20px;
-
 }
 
 #map {
@@ -232,13 +230,22 @@ table {
 
 #tb3 {
     margin-top: 10px !important;
-
     border-bottom-right-radius: 30px;
     border-bottom-left-radius: 30px;
-
-
 }
 
 .returnIcon {
     cursor: pointer;
+}
+
+.wrp {
+    display: inline-block;
+    font-size: 2rem;
+    width: 100%;
+}
+
+#ipinfoWrp {
+    background: #2980B9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #FFFFFF, #6DD5FA, #2980B9);
 }
